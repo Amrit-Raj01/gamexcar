@@ -13,9 +13,9 @@ let gameInterval;
 // Move car left and right
 document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft' && carLeft > 0) {
-    carLeft -= 10;
-  } else if (e.key === 'ArrowRight' && carLeft < 90) {
-    carLeft += 10;
+    carLeft -= 5;
+  } else if (e.key === 'ArrowRight' && carLeft < 95) {
+    carLeft += 5;
   }
   car.style.left = `${carLeft}%`;
 });
