@@ -1,0 +1,65 @@
+/* style.css */
+body {
+  margin: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+  font-family: Arial, sans-serif;
+}
+
+.game-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('evening-background.jpg') no-repeat center center/cover;
+}
+
+.score-board {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  color: white;
+  font-size: 20px;
+}
+
+.car {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 100px;
+  background: url('car.png') no-repeat center center/cover;
+}
+
+.obstacle {
+  position: absolute;
+  top: -100px;
+  width: 50px;
+  height: 50px;
+  background: url('obstacle.png') no-repeat center center/cover;
+  animation: moveObstacle 3s linear infinite;
+}
+
+.coin {
+  position: absolute;
+  top: -50px;
+  width: 30px;
+  height: 30px;
+  background: url('coin.png') no-repeat center center/cover;
+  animation: moveCoin 5s linear infinite;
+}
+
+@keyframes moveObstacle {
+  to {
+    top: 100vh;
+  }
+}
+
+@keyframes moveCoin {
+  to {
+    top: 100vh;
+  }
+}
