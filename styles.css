@@ -31,7 +31,7 @@ body {
   transform: translateX(-50%);
   width: 60px;
   height: 100px;
-  background: url('car.png') no-repeat center center/cover;
+  background: url('https://raw.githubusercontent.com/Amrit-Raj01/gamexcar/main/DALL%C2%B7E%202025-02-16%2019.59.25%20-%20A%20simple%202D%20side%20view%20of%20a%20car%20facing%20right%20for%20a%20racing%20game.%20The%20car%20should%20be%20red%20with%20black%20wheels%20and%20a%20sleek%20design%2C%20suitable%20for%20a%20modern%20racin.webp') no-repeat center center/cover;
 }
 
 .obstacle {
