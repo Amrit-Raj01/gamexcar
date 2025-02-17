@@ -2,7 +2,7 @@
 body {
   margin: 0;
   overflow: hidden;
-  background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+  background: url('https://github.com/Amrit-Raj01/gamexcar/blob/main/background.png?raw=true') no-repeat center center/cover;
   font-family: Arial, sans-serif;
 }
 
@@ -10,7 +10,6 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url('evening-background.jpg') no-repeat center center/cover;
 }
 
 .score-board {
@@ -27,40 +26,46 @@ body {
 .car {
   position: absolute;
   bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 50px;
   width: 80px;
-  height: 40px;
-  background: url('https://github.com/Amrit-Raj01/gamexcar/blob/main/car.png?raw=true') no-repeat center center/cover;
-  background-size: contain;
+  height: 50px;
+  background-size: cover;
 }
 
-.obstacle {
+.demon {
   position: absolute;
-  top: -100px;
-  width: 50px;
-  height: 50px;
-  background: url('obstacle.png') no-repeat center center/cover;
-  animation: moveObstacle 3s linear infinite;
+  top: 50px;
+  right: -100px;
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  animation: moveDemon 5s linear infinite;
 }
 
 .coin {
   position: absolute;
-  top: -50px;
-  width: 30px;
-  height: 30px;
-  background: url('coin.png') no-repeat center center/cover;
-  animation: moveCoin 5s linear infinite;
+  top: 100px;
+  right: -50px;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  animation: moveCoin 6s linear infinite;
 }
 
-@keyframes moveObstacle {
+@keyframes moveDemon {
+  from {
+    right: -100px;
+  }
   to {
-    top: 100vh;
+    right: 100vw;
   }
 }
 
 @keyframes moveCoin {
+  from {
+    right: -50px;
+  }
   to {
-    top: 100vh;
+    right: 100vw;
   }
 }
