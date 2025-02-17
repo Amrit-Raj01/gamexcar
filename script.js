@@ -28,7 +28,7 @@ function checkCollisions() {
   if (
     carRect.left < demonRect.right &&
     carRect.right > demonRect.left &&
-    carRect.bottom > demonRect.top
+    carRect.bottom > demonRect.bottom
   ) {
     alert('Game Over!');
     window.location.reload();
@@ -38,7 +38,7 @@ function checkCollisions() {
   if (
     carRect.left < coinRect.right &&
     carRect.right > coinRect.left &&
-    carRect.bottom > coinRect.top
+    carRect.bottom > coinRect.bottom
   ) {
     coinsCollected += 1;
     coinsDisplay.textContent = coinsCollected;
