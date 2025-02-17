@@ -1,49 +1,37 @@
 // script.js
 const car = document.getElementById('car');
-const obstacle = document.getElementById('obstacle');
+const demon = document.getElementById('demon');
 const coin = document.getElementById('coin');
 const speedDisplay = document.getElementById('speed');
 const coinsDisplay = document.getElementById('coins');
 
-let carLeft = 50; // Car's initial position
-let speed = 0;
+let speed = 5;
 let coinsCollected = 0;
-let gameInterval;
 
 // Move car left and right
 document.addEventListener('keydown', (e) => {
+  let carLeft = parseInt(window.getComputedStyle(car).left);
   if (e.key === 'ArrowLeft' && carLeft > 0) {
-    carLeft -= 5;
-  } else if (e.key === 'ArrowRight' && carLeft < 95) {
-    carLeft += 5;
+    car.style.left = `${carLeft - 10}px`;
+  } else if (e.key === 'ArrowRight' && carLeft < window.innerWidth - 80) {
+    car.style.left = `${carLeft + 10}px`;
   }
-  car.style.left = `${carLeft}%`;
-});
-
-// Accelerate and brake
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowUp') {
-    speed += 1;
-  } else if (e.key === 'ArrowDown' && speed > 0) {
-    speed -= 1;
-  }
-  speedDisplay.textContent = speed;
 });
 
 // Check for collisions and collect coins
 function checkCollisions() {
   const carRect = car.getBoundingClientRect();
-  const obstacleRect = obstacle.getBoundingClientRect();
+  const demonRect = demon.getBoundingClientRect();
   const coinRect = coin.getBoundingClientRect();
 
-  // Collision with obstacle
+  // Collision with demon
   if (
-    carRect.left < obstacleRect.right &&
-    carRect.right > obstacleRect.left &&
-    carRect.bottom > obstacleRect.top
+    carRect.left < demonRect.right &&
+    carRect.right > demonRect.left &&
+    carRect.bottom > demonRect.top
   ) {
     alert('Game Over!');
-    clearInterval(gameInterval);
+    window.location.reload();
   }
 
   // Collect coin
@@ -54,35 +42,15 @@ function checkCollisions() {
   ) {
     coinsCollected += 1;
     coinsDisplay.textContent = coinsCollected;
-    coin.style.top = '-50px';
-    coin.style.left = `${Math.random() * 90}%`;
+    coin.style.right = '-50px';
+    coin.style.top = `${Math.random() * window.innerHeight}px`;
   }
 }
 
-// Move obstacles and coins
-function moveObjects() {
-  const obstacleTop = parseFloat(obstacle.style.top) || -100;
-  const coinTop = parseFloat(coin.style.top) || -50;
-
-  obstacle.style.top = `${obstacleTop + speed}px`;
-  coin.style.top = `${coinTop + speed}px`;
-
-  if (obstacleTop > window.innerHeight) {
-    obstacle.style.top = '-100px';
-    obstacle.style.left = `${Math.random() * 90}%`;
-  }
-
-  if (coinTop > window.innerHeight) {
-    coin.style.top = '-50px';
-    coin.style.left = `${Math.random() * 90}%`;
-  }
-
+// Game loop
+function gameLoop() {
   checkCollisions();
+  requestAnimationFrame(gameLoop);
 }
 
-// Start game
-function startGame() {
-  gameInterval = setInterval(moveObjects, 20);
-}
-
-startGame();
+gameLoop();
